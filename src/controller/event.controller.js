@@ -3,6 +3,7 @@ const EventCRUD = require("../crud/event.crud");
 const _eventInfoField = event => {
 
     return {
+        _id: event._id,
         uid: event.uid,
         url: event.url,
         result: event.result,
