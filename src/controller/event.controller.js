@@ -23,7 +23,7 @@ exports.eventInfoField = event => {
 
 exports.getAllEvents = async (req, res) => {
 
-    const events = await EventCRUD.getAllEvent(req.query.skip || 0, req.query.limit || 10);
+    const events = await EventCRUD.getAllEvent(req.query.skip || 0, req.query.limit || 100);
 
     res.result = [];
 
@@ -108,7 +108,7 @@ exports.createEvent = async (req, res) => {
         });
     }
 
-    const event = await EventCRUD.createEvent({ ...req.body, url: 'https://img.dummy.com' });
+    const event = await EventCRUD.createEvent({ ...req.body, url: req.body.url || 'https://img.dummy.com' });
 
     return res.status(201).json({
         detail: _eventInfoField(event)
